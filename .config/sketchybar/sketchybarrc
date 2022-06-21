@@ -1,125 +1,21 @@
+#!/usr/bin/env bash
 
-# This is a demo config to bring across some of the most important commands more easily.
-# This is meant to be changed and configured, as it is intentionally kept sparse.
-# For a more advanced configuration example see https://github.com/FelixKratz/SketchyBar/discussions/47#discussioncomment-2027233
+sketchybar -m --add item           space_template left                                   \
+              --set space_template drawing=off                                           \
+                                   label.drawing=off                                     \
+                                   icon.padding_left=5                                   \
+                                   icon.padding_right=5                                  \
+                                   icon.highlight_color=0xfffe8019                       \
+                                   click_script="yabai -m space --focus \$(echo \$NAME | tr '.' ' ' | awk '{ print \$2 }')" \
+              --add item           updater left                                          \
+              --set updater        script="~/.config/sketchybar/plugins/space_update.sh" \
+                                   drawing=off                                           \
+                                   updates=on                                            \
+              --subscribe          updater space_change display_change
 
-##### Bar Appearance #####
-# Configuring the general appearance of the bar, these are only some of the
-# options available. For all options see:
-# https://felixkratz.github.io/SketchyBar/config/bar
-# If you are looking for other colors, see the color picker:
-# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
-
-sketchybar --bar height=32        \
-                 blur_radius=50   \
-                 position=top     \
-                 padding_left=5   \
-                 padding_right=5  \
-                 color=0x44000000
-
-
-##### Changing Defaults #####
-# We now change some default values that are applied to all further items
-# For a full list of all available item properties see:
-# https://felixkratz.github.io/SketchyBar/config/items
-
-sketchybar --default updates=when_shown                    \
-                     drawing=on                            \
-                     icon.font="FiraCode Nerd Font:Bold:17.0"  \
-                     icon.color=0xffffffff                 \
-                     label.font="FiraCode Nerd Font:Bold:14.0" \
-                     label.color=0xffffffff                \
-                     label.padding_left=4                  \
-                     label.padding_right=4                 \
-                     icon.padding_left=8                   \
-                     icon.padding_right=8
-
-##### Adding Mission Control Space Indicators #####
-# Now we add some space components:
-# https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
-# to indicate active and available mission control spaces
-
-sketchybar --add space code left                              \
-           --set code associated_display=1                    \
-                      associated_space=1                      \
-                      icon.font="FiraCode Nerd Font:Bold:20.0"\
-                      icon=                                  \
-                      icon.highlight_color=0xff89b4fa         \
-                      label=code                              \
-                      click_script="yabai -m space --focus 1" \
-                                                              \
-           --add space tex left                               \
-           --set tex  associated_display=1                    \
-                      associated_space=2                      \
-                      icon=                                  \
-                      icon.highlight_color=0xfffab387         \
-                      label=tex                               \
-                      click_script="yabai -m space --focus 2" \
-                                                              \
-           --add space soc left                               \
-           --set soc  associated_display=1                    \
-                      associated_space=3                      \
-                      icon.font="FiraCode Nerd Font:Bold:20.0"\
-                      icon=ﳴ                                  \
-                      icon.highlight_color=0xffcba6f7         \
-                      label=social                            \
-                      click_script="yabai -m space --focus 3" \
-                                                              \
-           --add space bro left                               \
-           --set bro  associated_display=1                    \
-                      associated_space=4                      \
-                      icon.font="FiraCode Nerd Font:Bold:20.0"\
-                      icon=                                  \
-                      icon.highlight_color=0xffa6e3a1         \
-                      label=browser                           \
-                      click_script="yabai -m space --focus 4" \
-                                                              \
-           --add space mail left                              \
-           --set mail associated_display=1                    \
-                      associated_space=5                      \
-                      icon.font="FiraCode Nerd Font:Bold:20.0"\
-                      icon=                                  \
-                      icon.highlight_color=0xffa6e3a1         \
-                      label=mail                              \
-                      click_script="yabai -m space --focus 5" 
-                      
-
-##### Adding Left Items #####
-# We add some regular items to the left side of the bar
-# only the properties deviating from the current defaults need to be set
-
-# sketchybar --add item space_separator left                                                  \
-#            --set space_separator  icon=                                                    \
-#                                   associated_space=1                                        \
-#                                   icon.padding_left=15                                      \
-#                                   label.padding_right=15                                    \
-#                                   icon.font="FiraCode Nerd Font:Bold:15.0"                      \
-                                                                                            \
-           # --add item gitNotifications left                                                 \
-           # --set gitNotifications associated_space=1                                        \
-           #                        update_freq=300                                           \
-           #                        icon.font="FiraCode Nerd Font:Bold:18.0"                      \
-           #                        icon=                                                    \
-           #                        script="~/.config/sketchybar/plugins/gitNotifications.sh" \
-           #                        click_script="open https://github.com/notifications"      \
-           # --subscribe gitNotifications system_woke                                         \
-                                                                                            \
-           # --add item githubIndicator left                                                  \
-           # --set githubIndicator  associated_space=1                                        \
-           #                        update_freq=1000                                          \
-           #                        icon.font="FiraCode Nerd Font:Bold:18.0"                      \
-           #                        icon=                                                    \
-           #                        click_script="open https://github.com"                    \
-           #                        script="~/.config/sketchybar/plugins/githubIndicator.sh"  \
-           # --subscribe githubIndicator system_woke                                          \
-           #                                                                                  \
-           # --add item topmem left                                                           \
-           # --set topmem           associated_space=1                                        \
-           #                        icon.padding_left=10                                      \
-           #                        update_freq=15                                            \
-           #                        script="~/.config/sketchybar/plugins/topmem.sh"
-
-##### Finalizing Setup #####
-sketchybar --update
-
-echo "sketchybar configuration loaded.."
+args=()
+for i in {1..10}; do
+  args+=(--clone space.${i} space_template \
+         --set   space.${i} icon=${i})
+done 
+sketchybar -m "${args[@]}" --update
