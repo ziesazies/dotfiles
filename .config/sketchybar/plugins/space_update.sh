@@ -2,7 +2,7 @@
 
 QUERY="$(yabai -m query --spaces)"
 YABAI_SPACES=( $(echo "$QUERY" | jq -r '.[].index') )
-VISIBLE=( "0" $(echo "$QUERY" | jq -r '.[].visible') )
+VISIBLE=( "0" $(echo "$QUERY" | jq -r '.[]."is-visible"') )
 DISPLAY=( "0" $(echo "$QUERY" | jq -r '.[].display') )
 
 args=()
