@@ -45,4 +45,5 @@
    - **Inspirasi**
       - [janleigh](https://github.com/janleigh/dotfiles) for the README style.
       - [dotzenith](https://github.com/dotzenith/dotconfig) for the README style too.
+      - [rockyzhang24](https://github.com/rockyzhang24) for the skhdrc config.
       - [catppuccin](https://github.com/catppuccin) for the colors and the badge style.
