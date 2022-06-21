@@ -1,11 +1,25 @@
 #!/usr/bin/env bash
 
+sketchybar --bar     height=24                                          \
+                     blur_radius=0                                     \
+                     position=top                                       \
+                     padding_left=10                                     \
+                     padding_right=5                                    \
+                     color=0xff1e1e2e
+
+sketchybar --default updates=when_shown                                 \
+                     drawing=on                                         \
+                     icon.font="FiraCode Nerd Font:Bold:16.0"           \
+                     icon.color=0xffffffff                              \
+                     label.font="FiraCode Nerd Font:Bold:14.0"          \
+                     label.color=0xffffffff                             
+
 sketchybar -m --add item           space_template left                                   \
               --set space_template drawing=off                                           \
                                    label.drawing=off                                     \
-                                   icon.padding_left=5                                   \
+                                   icon.padding_left=15                                   \
                                    icon.padding_right=5                                  \
-                                   icon.highlight_color=0xfffe8019                       \
+                                   icon.highlight_color=0xfffab387                       \
                                    click_script="yabai -m space --focus \$(echo \$NAME | tr '.' ' ' | awk '{ print \$2 }')" \
               --add item           updater left                                          \
               --set updater        script="~/.config/sketchybar/plugins/space_update.sh" \
@@ -13,9 +27,12 @@ sketchybar -m --add item           space_template left                          
                                    updates=on                                            \
               --subscribe          updater space_change display_change
 
+# STATIC_NAMES=("" "" "" "" "" "" "" "" "" "" "" "" "")
+STATIC_NAMES=("" "I" "II" "III" "IV" "V" "VI" "VII" "VIII" "IX" "X" "XI" "XII" "XIII" "XIV" "XV") #0 to 15
+# STATIC_NAMES=("" "一" "二" "三" "四" "五" "六" "七" "八"  "九" "十")
 args=()
 for i in {1..10}; do
   args+=(--clone space.${i} space_template \
-         --set   space.${i} icon=${i})
+         --set   space.${i} icon=${STATIC_NAMES[i]})
 done 
 sketchybar -m "${args[@]}" --update
