@@ -163,10 +163,10 @@ alt + shift - d : yabai -m window --warp east
 # Set/unset the insertion position for a new window to be opened in terms of the current window
 #   - up, down, left, right: set/unset the insertion position to the up, down, left, right
 #   - /:                     set/unset the insertion to be stack mode
-alt + shift - up : yabai -m window --insert north
-alt + shift - down : yabai -m window --insert south
-alt + shift - left : yabai -m window --insert west
-alt + shift - right : yabai -m window --insert east
+# alt + shift - up : yabai -m window --insert north
+# alt + shift - down : yabai -m window --insert south
+# alt + shift - left : yabai -m window --insert west
+# alt + shift - right : yabai -m window --insert east
 alt + shift - 0x2C : yabai -m window --insert stack
 # }}} Window operations
 
