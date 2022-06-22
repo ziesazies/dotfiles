@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+ITEM_DIR="$HOME/.config/sketchybar/items" # Directory where the items are configured
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
+
+sketchybar -m --add event window_focus \
+              --add event title_change \
+              --add event application_front_switched \
+              --add event space_changed \
+              --add event yabai_command_run
+
 sketchybar --bar     height=24                                          \
                      blur_radius=0                                     \
                      position=top                                       \
@@ -25,8 +34,35 @@ sketchybar -m --add item           space_template left                          
               --set updater        script="~/.config/sketchybar/plugins/space_update.sh" \
                                    drawing=off                                           \
                                    updates=on                                            \
-              --subscribe          updater space_change display_change
-
+              --subscribe          updater space_change display_change                   \
+              --add item           time right                                            \
+              --set time           update_freq=15                                        \
+                                   label.padding_right=5                                 \
+                                   label.padding_left=10                                 \
+                                   icon.drawing=off                                      \
+                                   script="$PLUGIN_DIR/time.sh"         \
+              --add item           date right                                            \
+              --set date           update_freq=60                                        \
+                                   label.padding_right=5                                 \
+                                   drawing=on                                            \
+                                   script="$PLUGIN_DIR/date.sh"                          \
+              --add item           app_name center                                       \
+              --set app_name       label.padding_right=0                                 \
+                                   background.padding_left=2                             \
+                                   background.padding_right=0                            \
+              --add item           window center                                         \
+              --set window         script="$PLUGIN_DIR/window.sh"                        \
+                                   background.padding_left=0                             \
+                                   background.padding_right=0                            \
+              --subscribe          window                                                \
+                                   application_front_switched                            \
+                                   window_focus                                          \
+                                   title_change                                          \
+                                   space_changed                                         \
+                                   yabai_command_run                                     \
+              --add bracket        app_window                                            \
+                                   app_name window                                       \
+              --set app_window     background.drawing=on                                 \
 # STATIC_NAMES=("" "" "" "" "" "" "" "" "" "" "" "" "")
 STATIC_NAMES=("" "I" "II" "III" "IV" "V" "VI" "VII" "VIII" "IX" "X" "XI" "XII" "XIII" "XIV" "XV") #0 to 15
 # STATIC_NAMES=("" "一" "二" "三" "四" "五" "六" "七" "八"  "九" "十")
