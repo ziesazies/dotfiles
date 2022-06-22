@@ -27,6 +27,9 @@ passthrough < hyper - x ; default
 # Restart yabai
 hyper - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
+## Close active application
+hyper - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
+
 # Open a new terminal window
 # cmd - return : /Applications/alacritty.app/Contents/MacOS/alacritty
 #cmd - return : kitty --single-instance -d ~ &> /dev/null
@@ -52,6 +55,9 @@ lalt - l : yabai -m window --focus east || \
                                     jq 'map(select(.visible == 1)) | sort_by(.frame.x, .frame.y) | first | .id') || \
           yabai -m display --focus east
 lalt - r : yabai -m window --focus recent
+
+lalt - 0x27 : yabai -m window --focus last
+lalt - 0x29 : yabai -m window --focus first
 
 # (Butuh Stack. Belom Belajar)
 # lalt - 0x2B : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
@@ -188,10 +194,13 @@ alt + ctrl - s : yabai -m space --layout stack && \
 
 # ========== Toggle window properties (MEH - ALT + CTRL + SHIFT)  ========== {{{
 # Toggle window fullscreen zoom
-meh - m : yabai -m window --toggle zoom-fullscreen
+hyper - f : yabai -m window --toggle zoom-fullscreen
 
 # Toggle window split type (horizontally or vertically in terms of its parent)
-meh - s : yabai -m window --toggle split
+hyper - s : yabai -m window --toggle split
+
+# Enable / Disable gaps in current workspace: ctrl + lalt - g
+hyper - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 
 # }}} Toggle window properties
 
