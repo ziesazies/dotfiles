@@ -50,7 +50,7 @@ sketchybar -m --add item           space_template left                          
                                    script="$PLUGIN_DIR/date.sh"                          \
               --add item           app_name center                                       \
               --set app_name       label.padding_right=0                                 \
-                                   label.font="FiraCode Nerd Font:Bold:13.0"             \
+                                   label.font="FiraCode Nerd Font:Bold:12.0"             \
                                    background.padding_left=0                             \
                                    background.padding_right=5                            \
               --add item           window center                                         \
