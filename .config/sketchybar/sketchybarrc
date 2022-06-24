@@ -48,24 +48,30 @@ sketchybar -m --add item           space_template left                          
                                    label.font="FiraCode Nerd Font:Bold:14.0"             \
                                    drawing=on                                            \
                                    script="$PLUGIN_DIR/date.sh"                          \
-              --add item           app_name center                                       \
-              --set app_name       label.padding_right=0                                 \
-                                   label.font="FiraCode Nerd Font:Bold:12.0"             \
-                                   background.padding_left=0                             \
-                                   background.padding_right=5                            \
-              --add item           window center                                         \
-              --set window         script="$PLUGIN_DIR/window.sh"                        \
-                                   background.padding_left=0                             \
-                                   background.padding_right=0                            \
-              --subscribe          window                                                \
-                                   application_front_switched                            \
-                                   window_focus                                          \
-                                   title_change                                          \
-                                   space_changed                                         \
-                                   yabai_command_run                                     \
-              --add bracket        app_window                                            \
-                                   app_name window                                       \
-              --set app_window     background.drawing=on                                 \
+              --add item           system.label center \
+              --set system.label    script="sketchybar --set \$NAME label=\"\$INFO\""      \
+                                    label.font="FiraCode Nerd Font: Bold:14.0" \
+                                    label.color=0xfffab387 \
+              --subscribe          system.label front_app_switched
+              # --add item           app_name center                                       \
+              # --set app_name       label.padding_right=0                                 \
+              #                      label.font="FiraCode Nerd Font:Bold:12.0"             \
+              #                      background.padding_left=0                             \
+              #                      background.padding_right=5                            \
+              #                      label.color=0xfffab387                               \
+              # --add item           window center                                         \
+              # --set window         script="$PLUGIN_DIR/window.sh"                        \
+              #                      background.padding_left=0                             \
+              #                      background.padding_right=0                            \
+              # --subscribe          window                                                \
+              #                      application_front_switched                            \
+              #                      window_focus                                          \
+              #                      title_change                                          \
+              #                      space_changed                                         \
+              #                      yabai_command_run                                     \
+              # --add bracket        app_window                                            \
+              #                      app_name window                                       \
+              # --set app_window     background.drawing=on                                 \
 # STATIC_NAMES=("" "" "" "" "" "" "" "" "" "" "" "" "")
 STATIC_NAMES=("" "I" "II" "III" "IV" "V" "VI" "VII" "VIII" "IX" "X" "XI" "XII" "XIII" "XIV" "XV") #0 to 15
 # STATIC_NAMES=("" "一" "二" "三" "四" "五" "六" "七" "八"  "九" "十")
