@@ -1,0 +1,56 @@
+# catppuccin btop theme
+# made by radsteve
+
+theme[main_bg]="#1e1e2e" # background
+theme[main_fg]="#cdd6f4" # text
+theme[title]="#cba6f7"   # titles
+theme[hi_fg]="#89b4fa"   # shortcut highlithing
+theme[selected_bg]="#45475a" # background of selected item
+theme[selected_fg]="#fab387" # foreground of selected item
+theme[inactive_fg]="#b4befe" # inactive text
+theme[proc_misc]="#74c7ec" # miscellanious in the proc box
+theme[cpu_box]="#a6e3a1" # cpu box outline
+theme[mem_box]="#a6e3a1" # mem/disk box outline
+theme[net_box]="#a6e3a1" # net box outline
+theme[proc_box]="#a6e3a1" # proc box outline
+theme[div_line]="#a6e3a1" # box divider
+
+# temp graph
+theme[temp_start]="#a6e3a1"
+theme[temp_mid]="#fab387"
+theme[temp_end]="#f38ba8"
+
+# cpu graph
+theme[cpu_start]="#a6e3a1"
+theme[cpu_mid]="#fab387"
+theme[cpu_end]="#f38ba8"
+
+# mem/disk free graph
+theme[free_start]="#a6e3a1"
+theme[free_mid]="#fab387"
+theme[free_end]="#f38ba8"
+
+# mem/disk cached graph
+theme[cached_start]="#a6e3a1"
+theme[cached_mid]="#fab387"
+theme[cached_end]="#f38ba8"
+
+# mem/disk available graph
+theme[available_start]="#a6e3a1"
+theme[available_mid]="#fab387"
+theme[available_end]="#f38ba8"
+
+# mem/disk used graph
+theme[used_start]="#a6e3a1"
+theme[used_mid]="#fab387"
+theme[used_end]="#f38ba8"
+
+# download graph
+theme[download_start]="#a6e3a1"
+theme[download_mid]="#fab387"
+theme[download_end]="#f38ba8"
+
+# upload graph
+theme[upload_start]="#a6e3a1"
+theme[upload_mid]="#fab387"
+theme[upload_end]="#f38ba8"
