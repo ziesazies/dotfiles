@@ -76,6 +76,7 @@ plugins=(
 	git
 	zsh-syntax-highlighting
   vi-mode
+  golang
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -84,6 +85,7 @@ source $ZSH/oh-my-zsh.sh
 eval "$(jump shell)"
 eval "$(starship init zsh)"
 source $HOME/.cargo/env
+export GOPATH=~/go
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
