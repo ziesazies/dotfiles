@@ -74,6 +74,7 @@ yabai -m rule --add app="^Private Internet Access$" manage=off
 yabai -m rule --add app="^Raycast$" manage=off
 yabai -m rule --add app="^Focus To-Do$" manage=off
 yabai -m rule --add app="^JetBrains Toolbox$" manage=off
+yabai -m rule --add app="^Telegram$" sticky=on layer=above manage=off
 
 # add the following to the end of your yabairc to have it launch automatically when yabai starts.
 # make sure the limelight binary is added somewhere in your $PATH
