@@ -77,6 +77,7 @@ plugins=(
 	zsh-syntax-highlighting
   vi-mode
   golang
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
