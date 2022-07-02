@@ -1,83 +1,92 @@
-#!/usr/bin/env bash
+# This is a demo config to show some of the most important commands more easily.
+# This is meant to be changed and configured, as it is intentionally kept
+# sparse.
+# For a more advanced configuration example see my dotfiles:
+# https://github.com/FelixKratz/SketchyBar/discussions/47#discussioncomment-2027233
 
-ITEM_DIR="$HOME/.config/sketchybar/items" # Directory where the items are configured
-PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 
-sketchybar -m --add event window_focus \
-              --add event title_change \
-              --add event application_front_switched \
-              --add event space_changed \
-              --add event yabai_command_run
+##### Bar Appearance #####
+# Configuring the general appearance of the bar, these are only some of the
+# options available. For all options see:
+# https://felixkratz.github.io/SketchyBar/config/bar
+# If you are looking for other colors, see the color picker:
+# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar     height=24                                          \
-                     blur_radius=0                                     \
-                     position=top                                       \
-                     padding_left=10                                     \
-                     padding_right=5                                    \
-                     color=0xff1e1e2e
+sketchybar --bar height=24        \
+                 position=top     \
+                 padding_left=10  \
+                 padding_right=10 \
+                 color=0xff1e1e2e
 
-sketchybar --default updates=when_shown                                 \
-                     drawing=on                                         \
-                     icon.font="FiraCode Nerd Font:Bold:16.0"           \
-                     icon.color=0xffffffff                              \
-                     label.font="FiraCode Nerd Font:Regular:12.0"          \
-                     label.color=0xffffffff                             
 
-sketchybar -m --add item           space_template left                                   \
-              --set space_template drawing=off                                           \
-                                   label.drawing=off                                     \
-                                   icon.padding_left=15                                   \
-                                   icon.padding_right=5                                  \
-                                   icon.highlight_color=0xfffab387                       \
-                                   click_script="yabai -m space --focus \$(echo \$NAME | tr '.' ' ' | awk '{ print \$2 }')" \
-              --add item           updater left                                          \
-              --set updater        script="~/.config/sketchybar/plugins/space_update.sh" \
-                                   drawing=off                                           \
-                                   updates=on                                            \
-              --subscribe          updater space_change display_change                   \
-              --add item           time right                                            \
-              --set time           update_freq=15                                        \
-                                   label.padding_right=5                                 \
-                                   label.padding_left=10                                 \
-                                   label.font="FiraCode Nerd Font:Bold:14.0"             \
-                                   icon.drawing=off                                      \
-                                   script="$PLUGIN_DIR/time.sh"         \
-              --add item           date right                                            \
-              --set date           update_freq=60                                        \
-                                   label.padding_right=5                                 \
-                                   label.font="FiraCode Nerd Font:Bold:14.0"             \
-                                   drawing=on                                            \
-                                   script="$PLUGIN_DIR/date.sh"                          \
-              --add item           system.label center \
-              --set system.label    script="sketchybar --set \$NAME label=\"\$INFO\""      \
-                                    label.font="FiraCode Nerd Font:Bold:14.0" \
-                                    label.color=0xfffab387 \
-              --subscribe          system.label front_app_switched
-              # --add item           app_name center                                       \
-              # --set app_name       label.padding_right=0                                 \
-              #                      label.font="FiraCode Nerd Font:Bold:12.0"             \
-              #                      background.padding_left=0                             \
-              #                      background.padding_right=5                            \
-              #                      label.color=0xfffab387                               \
-              # --add item           window center                                         \
-              # --set window         script="$PLUGIN_DIR/window.sh"                        \
-              #                      background.padding_left=0                             \
-              #                      background.padding_right=0                            \
-              # --subscribe          window                                                \
-              #                      application_front_switched                            \
-              #                      window_focus                                          \
-              #                      title_change                                          \
-              #                      space_changed                                         \
-              #                      yabai_command_run                                     \
-              # --add bracket        app_window                                            \
-              #                      app_name window                                       \
-              # --set app_window     background.drawing=on                                 \
-# STATIC_NAMES=("" "" "" "" "" "" "" "" "" "" "" "" "")
-STATIC_NAMES=("" "I" "II" "III" "IV" "V" "VI" "VII" "VIII" "IX" "X" "XI" "XII" "XIII" "XIV" "XV") #0 to 15
-# STATIC_NAMES=("" "一" "二" "三" "四" "五" "六" "七" "八"  "九" "十")
-args=()
-for i in {1..10}; do
-  args+=(--clone space.${i} space_template \
-         --set   space.${i} icon=${STATIC_NAMES[i]})
-done 
-sketchybar -m "${args[@]}" --update
+##### Changing Defaults #####
+# We now change some default values that are applied to all further items
+# For a full list of all available item properties see:
+# https://felixkratz.github.io/SketchyBar/config/items
+
+sketchybar --default updates=when_shown                    \
+                     drawing=on                            \
+                     icon.font="FiraCode Nerd Font:Bold:12.0"  \
+                     icon.color=0xffffffff                 \
+                     label.font="FiraCode Nerd Font:Regular:14.0" \
+                     label.color=0xffffffff                \
+                     label.padding_left=4                  \
+                     label.padding_right=4                 \
+                     icon.padding_left=4                   \
+                     icon.padding_right=4
+
+##### Adding Mission Control Space Indicators #####
+# Now we add some mission control spaces:
+# https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
+# to indicate active and available mission control spaces
+
+SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8")
+
+for i in "${!SPACE_ICONS[@]}"
+do
+  sketchybar --add space space.$i left                                     \
+             --set space.$i associated_space=$(($i+1))                     \
+                            icon=${SPACE_ICONS[i]}                         \
+                            icon.highlight_color=0xff48aa2a               \
+                            icon.padding_left=8                            \
+                            icon.padding_right=8                           \
+                            background.padding_left=5                      \
+                            background.padding_right=5                     \
+                            background.color=0xfffab387                    \
+                            background.corner_radius=2                     \
+                            background.height=18                           \
+                            label.drawing=off                              \
+                            script="$PLUGIN_DIR/space.sh"                  \
+                            click_script="yabai -m space --focus $(($i+1))"
+done
+
+##### Adding Left Items #####
+# We add some regular items to the left side of the bar
+# only the properties deviating from the current defaults need to be set
+
+sketchybar --add item space_separator left                            \
+           --set space_separator icon=                               \
+                                 background.padding_left=15           \
+                                 background.padding_right=15          \
+                                 label.drawing=off                    \
+                                                                      \
+           --add item window_title left                               \
+           --set window_title    script="$PLUGIN_DIR/window_title.sh" \
+                                 label.color="0xfffab387"             \
+                                 icon.drawing=off                     \
+           --subscribe window_title front_app_switched
+
+##### Adding Right Items #####
+sketchybar --add item clock right                        \
+           --set clock   update_freq=10                  \
+                         script="$PLUGIN_DIR/clock.sh"   \
+           --add item battery right                      \
+           --set battery script="$PLUGIN_DIR/battery.sh" \
+                         update_freq=10                  \
+           --subscribe battery system_woke
+
+##### Finalizing Setup #####
+sketchybar --update
+
+echo "sketchybar configuration loaded.."
