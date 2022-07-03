@@ -59,6 +59,6 @@ watcher ${HOME}/.fig/tools/kitty-integration.py
 
 
 # BEGIN_KITTY_THEME
-# Catppuccin-Mocha
+# Catppuccin-Frappe
 include current-theme.conf
 # END_KITTY_THEME
