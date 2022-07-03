@@ -12,6 +12,8 @@ an executable
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "catppuccin"
+-- Lua
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 vim.opt.relativenumber = true
@@ -157,7 +159,6 @@ lvim.plugins = {
   }
 }
 
-vim.g.catppuccin_flavour = "mocha"
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
