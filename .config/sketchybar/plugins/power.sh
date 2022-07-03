@@ -23,4 +23,4 @@ if [[ $CHARGING != "" ]]; then
   ICON=""
 fi
 
-sketchybar --set battery label="${PERCENTAGE}%"
+sketchybar --set power icon="$ICON" 
