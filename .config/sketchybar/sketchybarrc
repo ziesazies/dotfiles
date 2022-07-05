@@ -1,23 +1,48 @@
-#                          ﱦ 齃     ﮂ  ﵁ 爵        ﭵ     ﱦ  ﰊ 異 ﴱ אַ  'Y⃣'
-
+#!/usr/bin/env bash
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 
+ROSEWATER=0xfff5e0dc
+FLAMINGO=0xfff2cdcd
+PINK=0xfff5c2e7
+MAUVE=0xffcba6f7
+RED=0xfff38ba8
+MAROON=0xffeba0ac
+PEACH=0xfffab387
+YELLOW=0xfff9e2af
+GREEN=0xffa6e3a1
+TEAL=0xff94e2d5
+SKY=0xff89dceb
+SAPPHIRE=0xff74c7ec
+BLUE=0xff89b4fa
+LAVENDER=0xffb4befe
+TEXT=0xffcdd6f4
+SUBTEXT1=0xffbac2de
+SUBTEXT0=0xffa6adc8
+OVERLAY2=0xff9399b2
+OVERLAY1=0xff7f849c
+OVERLAY0=0xff6c7086
+SURFACE2=0xff585b70
+SURFACE1=0xff45475a
+SURFACE0=0xff313244
+BASE=0xff1e1e2e
+MANTLE=0xff181825
+CRUST=0xff11111b
+
 ############## BAR ##############
-sketchybar -m --bar height=24 \
-                    position=top \
-                    padding_left=10 \
-                    padding_right=10 \
-                    color=0xff1e1e2e 
+sketchybar --bar height=24 \
+                position=top \
+                padding_left=8 \
+                padding_right=8 \
+                color=${CRUST} 
 
 ############## GLOBAL DEFAULTS ##############
 sketchybar -m --default updates=when_shown \
-                        icon.font="FiraCode Nerd Font:Bold:14.0" \
-                        icon.color=0xffcdd6f4\
+                        icon.font="FiraCode Nerd Font:Bold:16.0" \
+                        icon.color=${SAPPHIRE}\
                         icon.highlight_color=0xffE48FA8 \
-                        label.font="FiraCode Nerd Font:Bold:14.0" \
-                        label.color=0xffcdd6f4 \
-                        background.corner_radius=3 \
+                        label.font="FiraCode Nerd Font:Bold:12.0" \
+                        label.color=${TEXT} \
                         background.height=22
 
 ##### Adding Mission Control Space Indicators #####
@@ -35,13 +60,14 @@ do
   sketchybar --add space space.$sid left \
              --set space.$sid associated_space=$sid \
                               icon=${SPACE_ICONS[i]} \
-                              icon.highlight_color=0xff11111b \
+                              icon.highlight_color=${BASE} \
                               icon.padding_left=8 \
                               icon.padding_right=8 \
                               background.padding_left=4 \
                               background.padding_right=4 \
-                              background.color=0xffeba0ac \
+                              background.color=${BLUE} \
                               label.drawing=off \
+                              icon.font="FiraCode Nerd Font:Bold:12.0" \
                               script="$PLUGIN_DIR/space.sh"
 done
 
@@ -51,12 +77,12 @@ sketchybar --add item space_separator left                            \
                                  background.padding_right=12          \
                                  icon.font="FiraCode Nerd Font:Bold:10.0" \
                                  label.drawing=off                    \
-                                 icon.color=0xffcdd6f4                \
+                                 icon.color=${TEXT}                \
                                                                       \
            --add item window_title left                               \
            --set window_title    script="$PLUGIN_DIR/window_title.sh" \
                                  icon.drawing=off                     \
-                                 label.color=0xff94e2d5               \
+                                 label.color=${TEAL}               \
            --subscribe window_title front_app_switched
 
 ############## ITEM DEFAULTS ###############
@@ -64,56 +90,35 @@ sketchybar --default label.padding_left=6 \
                         icon.padding_right=6 \
                         icon.padding_left=6 \
                         label.padding_right=6\
-                        icon.font="FiraCode Nerd Font:Bold:14.0" \
                         background.height=22 \
-                        background.corner_radius=3
-
 
 ############## RIGHT ITEMS ##############
 sketchybar --add item time right \
               --set time update_freq=1 \
-                         icon.drawing=off \
+                         icon= \
                          script="$PLUGIN_DIR/time.sh" \
-                         background.color=0xff3C3E4F \
-                         background.padding_left=0 \
-                         background.padding_right=6 \
-
-sketchybar --add item time_logo right\
-              --set time_logo icon= \
-                               icon.color=0xff11111b \
-                               label.drawing=off \
-                               background.color=0xfff9e2af \
-                               background.padding_left=8
+                         icon.color=${MAUVE} \
+                         label.color=${MAUVE} \
 
 sketchybar --add item date right \
               --set date update_freq=1000 \
-                         icon.drawing=off \
+                         icon= \
                          script="$PLUGIN_DIR/clock.sh" \
-                         background.color=0xff3C3E4F \
-                         background.padding_left=0
-
-sketchybar --add item date_logo right\
-              --set date_logo icon= \
-                              icon.color=0xff11111b \
-                              label.drawing=off \
-                              background.color=0xff89b4fa \
-                              background.padding_left=8
+                         icon.color=${PINK} \
+                         label.color=${PINK} \
 
 sketchybar --add item battery right \
               --set battery update_freq=3 \
-                            icon.drawing=off \
                             script="$PLUGIN_DIR/battery.sh" \
-                            background.color=0xff3C3E4F \
-                            background.padding_left=0
+                            icon.color=${FLAMINGO} \
+                            label.color=${FLAMINGO} \
 
-sketchybar --add item power right \
-              --set power update_freq=3 \
-                          script="$PLUGIN_DIR/power.sh" \
-                          icon.color=0xff11111b\
-                          label.drawing=off \
-                          background.color=0xffa6e3a1 
-
-
+sketchybar --add item sound right \
+              --set sound \
+                script="$PLUGIN_DIR/sound.sh" \
+                update_freq=5 \
+                icon.color=${ROSEWATER} \
+                label.color=${ROSEWATER} \
 ############## FINALIZING THE SETUP ##############
 sketchybar -m --update
 
