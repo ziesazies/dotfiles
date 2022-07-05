@@ -1,19 +1,24 @@
 # vim:foldmethod=marker:foldlevel=0
 
-# Sample config reference: https://github.com/koekeishiya/skhd/blob/master/examples/skhdrc
+# Referensi default config dari: https://github.com/koekeishiya/skhd/blob/master/examples/skhdrc
+# Referensi config dari: https://github.com/rockyzhang24/dotfiles/blob/master/.config/skhd/skhdrc
+# Referensi config dari: https://www.notion.so/Yabai-8da3b829872d432fac43181b7ff628fc
 # Keywords (modifiers and literals): https://github.com/koekeishiya/skhd/issues/1
-# Referensi config dari https://github.com/rockyzhang24/dotfiles/blob/master/.config/skhd/skhdrc
 
-# MNEMONIC:
-# 1). Left ALT untu pindah fokus (window, space, monitor)
+# MNEMONIK:
+# 1). Left ALT untuk pindah fokus (window, space, monitor)
 # 2). ALT + SHIFT untuk operasi window
 # 2). ALT + CTRL untuk operasi space
 # 4). MEH (ALT + CTRL + SHIFT) untuk toggle properti windows
 # 5). FN untuk ubah ukuran window 
 
-# Mode declaration
+
+# ========== Toggle window properties (HYPER - CMD + ALT + CTRL + SHIFT)  ========== {{{
+#
+
+# Mode deklarasi
 # 1) default: yabai keybinding mode on
-# 2) passthrough: yabai keybinding mode off (dipakai misal ada aplikasi yang butuh shortcut yang ternyata udah di assign) 
+# 2) passthrough: yabai keybinding mode off (dipakai misal ada aplikasi yang butuh shortcut yang ternyata udah di assign sama skhd biar tetep bisa dipakai) 
 :: default : /Users/aliefazies/.config/limelight/limelightrc;\
              osascript -e "display notification \"skhd enabled!\" with title \"skhd\""
 
@@ -27,18 +32,25 @@ passthrough < hyper - x ; default
 # Restart yabai
 hyper - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
-## Close active application
+## Tutup aplikasi yang aktif
 hyper - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
 
-# Open a new terminal window
-# cmd - return : /Applications/alacritty.app/Contents/MacOS/alacritty
-#cmd - return : kitty --single-instance -d ~ &> /dev/null
-# cmd - return : ~/.config/yabai/scripts/open-iterm.sh
+# Toggle window jadi fullscreen
+hyper - f : yabai -m window --toggle zoom-fullscreen
+
+# Toggle window split dari horizontal ataupun vertical
+hyper - s : yabai -m window --toggle split
+
+# Enable / Disable gaps pada sebuah space
+hyper - g : yabai -m space --toggle padding; yabai -m space --toggle gap
+
+# }}} Toggle window properties
 
 # ========== Pindah Fokus (Left ALT) ========== {{{
-#   - k, j: focus the window above or below
-#   - h, j: focus the window left or right (support moving the focus across the display)
-#   - r:    focus the recently-focused window
+#   - k, j: fokus ke window atas atau bawah
+#   - h, l: fokus ke window kiri atau kanan (mendukung pindah antar monitor)
+#   - r:    fokus window yang baru saja difokuskan
+#   - :, '  fokus ke window yang pertama (paling kiri) atau terakhir (paling kana
 #   - <, >: cycle through the windows in the stack backward or forward
 #   - /:    focus the recently-focused window in the stack
 #   - m:    focus the fullscreen window in the current workspace or cycle through all the fullscreen windows
@@ -58,36 +70,23 @@ lalt - r : yabai -m window --focus recent
 
 lalt - 0x27 : yabai -m window --focus last
 lalt - 0x29 : yabai -m window --focus first
-
-# (Butuh Stack. Belom Belajar)
-# lalt - 0x2B : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
-# lalt - 0x2F : yabai -m window --focus stack.next || yabai -m window --focus stack.first
-# lalt - 0x2C : yabai -m window --focus stack.recent
-# lalt - m : [[ $(yabai -m query --windows --window | jq '."zoom-fullscreen"') == 0 ]] && \
-#           ( id=$(yabai -m query --windows --space | jq 'map(select(."zoom-fullscreen" == 1))[0] | .id') && \
-#             yabai -m window --focus ${id} ) || \
-#           ( yabai -m query --windows --space | \
-#             jq 'map(select(."zoom-fullscreen" == 1)) | sort_by(.id) | nth(index(map(select(.focused == 1))) - 1).id' | \
-#             xargs -I{} yabai -m window --focus {} )
 # }}} Changing focus
-
 
 # ========== Window operations (ALT + SHIFT) ========== {{{
 
 # Move (swap) window
-#   - k, j, h, l: swap the current window with the window above, below, left, or right
-#   - r:          swap the current window with the recently-focused window
+#   - k, j, h, l: tukar window saat ini dengan window di atas, bawah, kiri, atau kanan
+#   - r:          tukar window saat ini dengan window yang baru saja difoksukan
 alt + shift - k : yabai -m window --swap north
 alt + shift - j : yabai -m window --swap south
 alt + shift - h : yabai -m window --swap west
 alt + shift - l : yabai -m window --swap east
 alt + shift - r : yabai -m window --swap recent
 
-# Send window to workspace and follow focus
-#   - 1-0:  send the current window to the workspace #1-#10, and focus that window
-#   - [, ]: send the current window to the workspace on its left or right (support sending across the display and cycling through), and focus that window
-#     e.g., 4 | 1 2 | 3 (three display and currently at 3), [ will move the current window to workspace #2 and focus this window on workspace #2, and ] will move the current window to workspace #4 and focus this window on workspace #4
-#   - \:    send the current window to the recently-focused workspace, and focus that window
+# Kirim window ke space yang dituju dan ikut fokus ke space tersebut
+#   - 1-0:  Kirim window ke space tertentu #1-#10, dan fokus ke space tersebut
+#   - [, ]: Kirim window ke space di sebelah kiri atau kanan (Mendukung pengiriman antar monitor) dan fokus ke space tersebut
+#   - \:    Kirim window ke space yang sebelumnya dituju
 alt + shift - 1 : cur_window=$(yabai -m query --windows --window | jq '.id') && \
                   yabai -m window --space 1 && \
                   yabai -m window --focus ${cur_window}
@@ -133,10 +132,10 @@ alt + shift - 0x2A : cur_window=$(yabai -m query --windows --window | jq '.id') 
                      yabai -m window --space recent && \
                      yabai -m window --focus ${cur_window}
 
-# Send window to display (monitor) and follow focus
-#   - u, i, o: send the current window to the left, middle, or right display, and focus that window
-#   - z, x: send the current window to the display on the left, on the right (support cycling through), and focus that window
-#   - c:    send the current window to the recently-focused display, and focus that window
+# Kirim window ke monitor sebelah dan space ikut fokus 
+#   - u, i, o: Kirim ke monitor di kiri, tengah, atau kanan dan space ikut fokus 
+#   - z, x: Kirim ke monitor sebelah kanan atau kiri nya (mendukung perputaran monitor) dan space ikut fokus
+#   - c:    Kirim ke monitor yang sebelum nya difokuskan
 alt + shift - u : cur_window=$(yabai -m query --windows --window | jq '.id') && \
                   display_left=$(yabai -m query --displays | jq 'sort_by(.frame.x) | .[0].index') && \
                   yabai -m window --display ${display_left} && \
@@ -159,14 +158,15 @@ alt + shift - c : cur_window=$(yabai -m query --windows --window | jq '.id') && 
                   yabai -m window --display recent && \
                   yabai -m window --focus ${cur_window}
 
-# Warp (re-insert)
-#   - w, s, a, d: re-insert the current window, splitting the window above, below, left, or right
+# Warp (Disisipkan)
+#   - w, s, a, d: Disisipkan window yang sedang di fokus dengan cara splitting ke window di atas, bawah, kiri, atau kanan nya
 alt + shift - w : yabai -m window --warp north
 alt + shift - s : yabai -m window --warp south
 alt + shift - a : yabai -m window --warp west
 alt + shift - d : yabai -m window --warp east
 
 # Set/unset the insertion position for a new window to be opened in terms of the current window
+# !!!gabisa jalan kalau mau seleksi per kata harus diganti jangan alt shift!!!
 #   - up, down, left, right: set/unset the insertion position to the up, down, left, right
 #   - /:                     set/unset the insertion to be stack mode
 # alt + shift - up : yabai -m window --insert north
@@ -174,10 +174,10 @@ alt + shift - d : yabai -m window --warp east
 # alt + shift - left : yabai -m window --insert west
 # alt + shift - right : yabai -m window --insert east
 alt + shift - 0x2C : yabai -m window --insert stack
+
 # }}} Window operations
 
 # ========== Space operations (ALT + CTRL) ========== {{{
-
 # Change workspace layout
 #   - b, f, s: chagne the layout of the current workspace to bsp, float, or stack
 alt + ctrl - b : yabai -m space --layout bsp && \
@@ -189,23 +189,11 @@ alt + ctrl - f : yabai -m space --layout float && \
 alt + ctrl - s : yabai -m space --layout stack && \
                  open -g 'swiftbar://refreshplugin?name=yabai' && \
                  osascript -e "display notification \"Change the workspace layout to stack\" with title \"yabai\""
-
 # }}} Space operations
 
-# ========== Toggle window properties (MEH - ALT + CTRL + SHIFT)  ========== {{{
-# Toggle window fullscreen zoom
-hyper - f : yabai -m window --toggle zoom-fullscreen
-
-# Toggle window split type (horizontally or vertically in terms of its parent)
-hyper - s : yabai -m window --toggle split
-
-# Enable / Disable gaps in current workspace: ctrl + lalt - g
-hyper - g : yabai -m space --toggle padding; yabai -m space --toggle gap
-
-# }}} Toggle window properties
 
 # ========== Adjust window size (FN) ========== {{{
-# Adjust the window (floating or tiling window) size by adjusting its upper, lower, left, right edge of the window in 20 pixels
+# Sesuaikan ukuran window (window mengambang atau tiling) dengan menyesuaikan tepi atas, bawah, kiri, kanan jendela dalam 20 piksel
 #               7(+)
 #      -----------------------
 #      |        u(-)         |
@@ -214,7 +202,6 @@ hyper - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 #      |        n(-)         |
 #      |----------------------
 #               space(+)
-
 fn - u : yabai -m window --resize top:0:20          # top-
 fn - 7 : yabai -m window --resize top:0:-20         # top+
 fn - n : yabai -m window --resize bottom:0:-20      # bottom-
@@ -224,10 +211,9 @@ fn - h : yabai -m window --resize left:-20:0        # left+
 fn - k : yabai -m window --resize right:-20:0       # right-
 fn - l : yabai -m window --resize right:20:0        # right+
 
-# Balance size
+# Seimbangkan ukuran
 #   - 0: balance the sizes of the tiling windows in the curren workspace
 fn - 0 : yabai -m space --balance
-
 # }}} Adjust window size
 
-# THE END
+# SELESAI
