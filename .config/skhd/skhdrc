@@ -19,7 +19,7 @@
 # Mode deklarasi
 # 1) default: yabai keybinding mode on
 # 2) passthrough: yabai keybinding mode off (dipakai misal ada aplikasi yang butuh shortcut yang ternyata udah di assign sama skhd biar tetep bisa dipakai) 
-:: default : /Users/aliefazies/.config/limelight/limelightrc;\
+:: default : /Users/aliefazies/.config/limelight/limelightrc_enable;\
              osascript -e "display notification \"skhd enabled!\" with title \"skhd\""
 
 :: passthrough : /Users/aliefazies/.config/limelight/limelightrc_disable;\
@@ -70,6 +70,16 @@ lalt - r : yabai -m window --focus recent
 
 lalt - 0x27 : yabai -m window --focus last
 lalt - 0x29 : yabai -m window --focus first
+
+lalt - 0x2B : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
+lalt - 0x2F : yabai -m window --focus stack.next || yabai -m window --focus stack.first
+lalt - 0x2C : yabai -m window --focus stack.recent
+lalt - m : [[ $(yabai -m query --windows --window | jq '."zoom-fullscreen"') == 0 ]] && \
+          ( id=$(yabai -m query --windows --space | jq 'map(select(."zoom-fullscreen" == 1))[0] | .id') && \
+            yabai -m window --focus ${id} ) || \
+          ( yabai -m query --windows --space | \
+            jq 'map(select(."zoom-fullscreen" == 1)) | sort_by(.id) | nth(index(map(select(.focused == 1))) - 1).id' | \
+            xargs -I{} yabai -m window --focus {} )
 # }}} Changing focus
 
 # ========== Window operations (ALT + SHIFT) ========== {{{
