@@ -39,7 +39,7 @@ sketchybar --bar height=24 \
 ############## GLOBAL DEFAULTS ##############
 sketchybar -m --default updates=when_shown \
                         icon.font="FiraCode Nerd Font:Bold:16.0" \
-                        icon.color=${SAPPHIRE}\
+                        icon.color=${TEXT}\
                         icon.highlight_color=0xffE48FA8 \
                         label.font="FiraCode Nerd Font:Bold:12.0" \
                         label.color=${TEXT} \
@@ -75,19 +75,19 @@ sketchybar --add item space_separator left                            \
            --set space_separator icon=                               \
                                  background.padding_left=12           \
                                  background.padding_right=12          \
-                                 icon.font="FiraCode Nerd Font:Bold:10.0" \
+                                 icon.font="FiraCode Nerd Font:Bold:8.0" \
                                  label.drawing=off                    \
-                                 icon.color=${TEXT}                \
+                                 icon.color=${MAROON}                \
                                                                       \
            --add item window_title left                               \
            --set window_title    script="$PLUGIN_DIR/window_title.sh" \
                                  icon.drawing=off                     \
-                                 label.color=${TEAL}               \
+                                 label.color=${ROSEWATER}               \
            --subscribe window_title front_app_switched
 
 ############## ITEM DEFAULTS ###############
 sketchybar --default label.padding_left=6 \
-                        icon.padding_right=6 \
+                        icon.padding_right=0 \
                         icon.padding_left=6 \
                         label.padding_right=6\
                         background.height=22 \
@@ -95,30 +95,30 @@ sketchybar --default label.padding_left=6 \
 ############## RIGHT ITEMS ##############
 sketchybar --add item time right \
               --set time update_freq=1 \
-                         icon= \
+                         icon=\
                          script="$PLUGIN_DIR/time.sh" \
-                         icon.color=${MAUVE} \
-                         label.color=${MAUVE} \
+                         icon.color=${BLUE} \
+                         label.color=${BLUE} \
 
 sketchybar --add item date right \
               --set date update_freq=1000 \
-                         icon= \
+                         icon=\
                          script="$PLUGIN_DIR/clock.sh" \
-                         icon.color=${PINK} \
-                         label.color=${PINK} \
+                         icon.color=${YELLOW} \
+                         label.color=${YELLOW} \
 
 sketchybar --add item battery right \
               --set battery update_freq=3 \
                             script="$PLUGIN_DIR/battery.sh" \
-                            icon.color=${FLAMINGO} \
-                            label.color=${FLAMINGO} \
+                            icon.color=${GREEN} \
+                            label.color=${GREEN} \
 
 sketchybar --add item sound right \
               --set sound \
                 script="$PLUGIN_DIR/sound.sh" \
                 update_freq=5 \
-                icon.color=${ROSEWATER} \
-                label.color=${ROSEWATER} \
+                icon.color=${RED} \
+                label.color=${RED} \
 ############## FINALIZING THE SETUP ##############
 sketchybar -m --update
 

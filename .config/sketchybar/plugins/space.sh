@@ -2,7 +2,7 @@
 
 update() {
 if [ "$SELECTED" = "true" ]; then
-  sketchybar -m --set $NAME label.highlight=on icon.highlight=on background.drawing=on background.color=0xffb4befe
+  sketchybar -m --set $NAME label.highlight=on icon.highlight=on background.drawing=on background.color=0xff94e2d5
 else
   sketchybar -m --set $NAME label.highlight=off icon.highlight=off background.drawing=off background.color=${CRUST}
 fi
