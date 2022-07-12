@@ -45,21 +45,16 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use "numToStr/Comment.nvim"
-  -- use "tiagovla/scope.nvim"
-  -- use "akinsho/bufferline.nvim"
+  use { "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" }
+  use { "kyazdani42/nvim-web-devicons", commit = "8d2c5337f0a2d0a17de8e751876eeb192b32310e" }
+  use "kyazdani42/nvim-tree.lua"
+  use "akinsho/bufferline.nvim"
   use "moll/vim-bbye"
   use "nvim-lualine/lualine.nvim"
   use "akinsho/toggleterm.nvim"
-  use "lewis6991/impatient.nvim"
   use "ahmedkhalf/project.nvim"
+  use "lewis6991/impatient.nvim"
   use "lukas-reineke/indent-blankline.nvim"
-  use "christianchiarulli/hop.nvim"
-
-  -- UI
-  use { "stevearc/dressing.nvim" }
-  use "kyazdani42/nvim-web-devicons"
-  use "kyazdani42/nvim-tree.lua"
-  use "tamago324/lir.nvim"
   use "goolord/alpha-nvim"
 
   -- Colorschemes
@@ -72,7 +67,6 @@ return packer.startup(function(use)
   use { "hrsh7th/nvim-cmp" }
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
@@ -97,25 +91,9 @@ return packer.startup(function(use)
   use "lewis6991/gitsigns.nvim"
 
   -- DAP
-  -- use "mfussenegger/nvim-dap"
-  -- use "theHamsta/nvim-dap-virtual-text"
-  -- use "rcarriga/nvim-dap-ui"
-  -- use "Pocco81/DAPInstall.nvim"
-
-  -- Plugin Graveyard
-  -- use "romgrk/nvim-treesitter-context"
-  -- use "mizlan/iswap.nvim"
-  -- use {'christianchiarulli/nvim-ts-rainbow'}
-  -- use "nvim-telescope/telescope-ui-select.nvim"
-  -- use "nvim-telescope/telescope-file-browser.nvim"
-  -- use 'David-Kunz/cmp-npm' -- doesn't seem to work
-  -- use "lunarvim/vim-solidity"
-  -- use "metakirby5/codi.vim"
-  -- use "rcarriga/cmp-dap"
-  -- use "filipdutescu/renamer.nvim"
-  -- use "https://github.com/rhysd/conflict-marker.vim"
-  -- use "rebelot/kanagawa.nvim"
-  -- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
+  use "mfussenegger/nvim-dap"
+  use "rcarriga/nvim-dap-ui"
+  use "Pocco81/DAPInstall.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

@@ -74,6 +74,11 @@ _G.packer_plugins = {
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
+  ["DAPInstall.nvim"] = {
+    loaded = true,
+    path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/DAPInstall.nvim",
+    url = "https://github.com/Pocco81/DAPInstall.nvim"
+  },
   LuaSnip = {
     loaded = true,
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/LuaSnip",
@@ -84,6 +89,11 @@ _G.packer_plugins = {
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
+  ["bufferline.nvim"] = {
+    loaded = true,
+    path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
+    url = "https://github.com/akinsho/bufferline.nvim"
+  },
   catppuccin = {
     loaded = true,
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/catppuccin",
@@ -93,11 +103,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
-  },
-  ["cmp-cmdline"] = {
-    loaded = true,
-    path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
-    url = "https://github.com/hrsh7th/cmp-cmdline"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
@@ -119,11 +124,6 @@ _G.packer_plugins = {
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["dressing.nvim"] = {
-    loaded = true,
-    path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/dressing.nvim",
-    url = "https://github.com/stevearc/dressing.nvim"
-  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -134,11 +134,6 @@ _G.packer_plugins = {
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["hop.nvim"] = {
-    loaded = true,
-    path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/hop.nvim",
-    url = "https://github.com/christianchiarulli/hop.nvim"
-  },
   ["impatient.nvim"] = {
     loaded = true,
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/impatient.nvim",
@@ -148,11 +143,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
-  },
-  ["lir.nvim"] = {
-    loaded = true,
-    path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/lir.nvim",
-    url = "https://github.com/tamago324/lir.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -174,6 +164,16 @@ _G.packer_plugins = {
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-dap-ui"] = {
+    loaded = true,
+    path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
+    url = "https://github.com/rcarriga/nvim-dap-ui"
+  },
   ["nvim-lsp-installer"] = {
     loaded = true,
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
@@ -193,6 +193,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-ts-context-commentstring"] = {
+    loaded = true,
+    path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
+    url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
