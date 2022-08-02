@@ -61,7 +61,6 @@ yabai -m rule --add app="^Path Finder$" manage=off
 yabai -m rule --add app="^TeamViewer$" sticky=off layer=above manage=off
 yabai -m rule --add app="Fantastical" manage=off
 yabai -m rule --add app="^Spotify$" manage=off
-yabai -m rule --add app="^iTerm2$" manage=off
 yabai -m rule --add app="^Flux$" manage=off
 yabai -m rule --add app="^Time Out$" manage=off
 yabai -m rule --add app="^perl_client_app$" manage=off
@@ -77,6 +76,13 @@ yabai -m rule --add app="^JetBrains Toolbox$" manage=off
 yabai -m rule --add app="^Telegram$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Photo Booth$" sticky=on layer=above manage=off
 yabai -m rule --add app="^MenubarX$" sticky=on layer=above manage=off
+yabai -m rule --add app="^MonitorControl$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Android Studio$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Goland$" sticky=on layer=above manage=off
+yabai -m rule --add app="^DataGrip$" sticky=on layer=above manage=off
+
+
+
 
 # add the following to the end of your yabairc to have it launch automatically when yabai starts.
 # make sure the limelight binary is added somewhere in your $PATH
