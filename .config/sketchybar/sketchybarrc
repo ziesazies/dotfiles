@@ -1,125 +1,44 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+ITEM_DIR="$HOME/.config/sketchybar/items"
 
-ROSEWATER=0xfff5e0dc
-FLAMINGO=0xfff2cdcd
-PINK=0xfff5c2e7
-MAUVE=0xffcba6f7
-RED=0xfff38ba8
-MAROON=0xffeba0ac
-PEACH=0xfffab387
-YELLOW=0xfff9e2af
-GREEN=0xffa6e3a1
-TEAL=0xff94e2d5
-SKY=0xff89dceb
-SAPPHIRE=0xff74c7ec
-BLUE=0xff89b4fa
-LAVENDER=0xffb4befe
-TEXT=0xffcdd6f4
-SUBTEXT1=0xffbac2de
-SUBTEXT0=0xffa6adc8
-OVERLAY2=0xff9399b2
-OVERLAY1=0xff7f849c
-OVERLAY0=0xff6c7086
-SURFACE2=0xff585b70
-SURFACE1=0xff45475a
-SURFACE0=0xff313244
-BASE=0xff1e1e2e
-MANTLE=0xff181825
-CRUST=0xff11111b
+source $HOME/.config/sketchybar/colors.sh
+source $HOME/.config/sketchybar/icons.sh
 
-############## BAR ##############
-sketchybar --bar height=24 \
-                position=top \
-                padding_left=8 \
-                padding_right=8 \
-                color=${CRUST} 
+export FONT="SF Mono"
+export NERD_FONT="SFMono Nerd Font"
 
-############## GLOBAL DEFAULTS ##############
-sketchybar -m --default updates=when_shown \
-                        icon.font="FiraCode Nerd Font:Bold:16.0" \
-                        icon.color=${TEXT}\
-                        icon.highlight_color=0xffE48FA8 \
-                        label.font="FiraCode Nerd Font:Bold:12.0" \
-                        label.color=${TEXT} \
-                        background.height=22
+sketchybar --bar height=24        \
+                 blur_radius=100  \
+                 position=top     \
+                 padding_left=10  \
+                 padding_right=10 \
+                 color=0x15ffffff \
+                 shadow=on
 
-##### Adding Mission Control Space Indicators #####
-# Now we add some mission control spaces:
-# https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
-# to indicate active and available mission control spaces
+sketchybar --default updates=when_shown                       \
+                     drawing=on                               \
+                     icon.font="$NERD_FONT:Regular:14.0"      \
+                     icon.color=0xffffffff                    \
+                     label.font="$FONT:Light:14.0"            \
+                     label.color=0xffffffff                   \
+                     label.padding_left=4                     \
+                     label.padding_right=4                    \
+                     icon.padding_left=4                      \
+                     icon.padding_right=4
 
-SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8")
-SPACES=()
+source $ITEM_DIR/apple.sh
+source $ITEM_DIR/window_title.sh
+source $ITEM_DIR/spaces.sh
+# source $ITEM_DIR/window_title.sh
+source $ITEM_DIR/clock.sh
+source $ITEM_DIR/battery.sh
+# /* source $ITEM_DIR/cpu.sh */
+# /* source $ITEM_DIR/wifi.sh */
+# /* source $ITEM_DIR/darkside.sh */
 
-for i in "${!SPACE_ICONS[@]}"
-do
-  sid=$(($i+1))
-  SPACES+=(space.$sid)
-  sketchybar --add space space.$sid left \
-             --set space.$sid associated_space=$sid \
-                              icon=${SPACE_ICONS[i]} \
-                              icon.highlight_color=${BASE} \
-                              icon.padding_left=8 \
-                              icon.padding_right=8 \
-                              background.padding_left=4 \
-                              background.padding_right=4 \
-                              background.color=${BLUE} \
-                              label.drawing=off \
-                              icon.font="FiraCode Nerd Font:Bold:12.0" \
-                              script="$PLUGIN_DIR/space.sh"
-done
 
-sketchybar --add item space_separator left                            \
-           --set space_separator icon=                               \
-                                 background.padding_left=12           \
-                                 background.padding_right=12          \
-                                 icon.font="FiraCode Nerd Font:Bold:8.0" \
-                                 label.drawing=off                    \
-                                 icon.color=${MAROON}                \
-                                                                      \
-           --add item window_title left                               \
-           --set window_title    script="$PLUGIN_DIR/window_title.sh" \
-                                 icon.drawing=off                     \
-                                 label.color=${ROSEWATER}               \
-           --subscribe window_title front_app_switched
+sketchybar --update
 
-############## ITEM DEFAULTS ###############
-sketchybar --default label.padding_left=6 \
-                        icon.padding_right=0 \
-                        icon.padding_left=6 \
-                        label.padding_right=6\
-                        background.height=22 \
-
-############## RIGHT ITEMS ##############
-sketchybar --add item time right \
-              --set time update_freq=1 \
-                         icon=\
-                         script="$PLUGIN_DIR/time.sh" \
-                         icon.color=${BLUE} \
-                         label.color=${BLUE} \
-
-sketchybar --add item date right \
-              --set date update_freq=1000 \
-                         icon=\
-                         script="$PLUGIN_DIR/clock.sh" \
-                         icon.color=${YELLOW} \
-                         label.color=${YELLOW} \
-
-sketchybar --add item battery right \
-              --set battery update_freq=3 \
-                            script="$PLUGIN_DIR/battery.sh" \
-                            icon.color=${GREEN} \
-                            label.color=${GREEN} \
-
-sketchybar --add item sound right \
-              --set sound \
-                script="$PLUGIN_DIR/sound.sh" \
-                update_freq=5 \
-                icon.color=${RED} \
-                label.color=${RED} \
-############## FINALIZING THE SETUP ##############
-sketchybar -m --update
-
-echo "sketchybar configuration loaded..."
+echo "sketchybar configuration loaded.."
