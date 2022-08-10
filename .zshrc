@@ -85,7 +85,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-	zsh-syntax-highlighting
+  fast-syntax-highlighting
   vi-mode
   golang
   zsh-autosuggestions
@@ -99,6 +99,9 @@ eval "$(jump shell)"
 source $HOME/.cargo/env
 export GOPATH=~/go
 export PATH="/usr/local/Cellar/mysql/8.0.29_1/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -132,6 +135,9 @@ alias lt='ls --tree'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# PURE_POWER_MODE=modern
+# source /Users/aliefazies/.dotfiles/.zsh-theme/gruvbox-material-dark.zsh
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
