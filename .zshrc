@@ -102,6 +102,8 @@ export PATH="/usr/local/Cellar/mysql/8.0.29_1/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+export PATH="$HOME/.jev/bin:$PATH"
+eval "$(jenv init -)"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
