@@ -1,50 +1,59 @@
-<h2 align="center"> ━━━━━━  ❖  ━━━━━━ </h2>
+## Preview
 
-<!-- BADGES -->
-<div align="center">
-   <p></p>
-   
-   <img src="https://img.shields.io/github/stars/aliefazies/dotfiles?color=F8BD96&labelColor=302D41&style=for-the-badge">   
+![gruvbox-material-dark](https://user-images.githubusercontent.com/37491630/64084858-c9364200-cd1e-11e9-8353-492ac95d5ce2.png)
 
-   <img src="https://img.shields.io/github/forks/aliefazies/dotfiles?color=DDB6F2&labelColor=302D41&style=for-the-badge">   
+## Syntax Highlighting
 
-   <img src="https://img.shields.io/github/repo-size/aliefazies/dotfiles?color=ABE9B3&labelColor=302D41&style=for-the-badge">
-   
-   <img src="https://badges.pufler.dev/visits/aliefazies/dotfiles?style=for-the-badge&color=96CDFB&logoColor=white&labelColor=302D41"/>
-   <br>
-</div>
+The syntax highlighting is implemented by [zdharma-continuum/fast-syntax-highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting).
 
-</p>
+The `default` theme in fast-syntax-highlighting will use the colors of your terminal emulator color scheme to highlight words, so you can set the theme to `default` and change the terminal emulator color scheme to the corresponding one to get proper syntax highlighting.
 
----
+## Prompt
 
-<!-- Informasi -->
-### ❖ Informasi 
-<!--    <img src=".assets/rice.png" alt="Repo Preview" align="right" width="400px"> -->
+The prompt theme is based on [pure-power](https://github.com/romkatv/dotfiles-public/blob/master/.purepower) which is inspired by [pure](https://github.com/sindresorhus/pure), it depends on [romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k).
 
-   Berikut yang saya selalu gunakan sehari-hari:
+To use it, simply source this file in your zshrc after powerlevel10k has been load:
 
-   - **OS:** [MacOS](https://www.apple.com/macos) (Big Sur 11.6.7)
-   - **WM:** [yabai](https://github.com/koekeishiya/yabai)
-   - **Hotkeys:** [skhd](https://github.com/koekeishiya/skhd)
-   - **Panel:** [SketchyBar](https://github.com/FelixKratz/SketchyBar)
-   - **Terminal:** [kitty](https://github.com/kovidgoyal/kitty/)
-   - **Shell:** [zsh](https://www.zsh.org/)
-   - **Prompt:** [starship](https://starship.rs/)
-   - **Editor:** [neovim](https://github.com/neovim/neovim/) & [LunarVim](https://github.com/LunarVim/LunarVim)
-   - **Multiplexer:** [kitty](https://github.com/kovidgoyal/kitty/)
-   - **Theme:** [catppuccin](https://github.com/catppuccin) 
-   - **Browser:** [Firefox](https://firefox.com)
-   - **Browser Startup:** [Bonjourr](https://github.com/victrme/Bonjourr)
-   - **Application Launcher:** [Raycast](https://www.raycast.com/)
+```zsh
+source /path/to/dotfiles/.zsh-theme/<color-scheme>.zsh
+```
 
-<br>
+Where `<color-scheme>` is one of the following:
 
-### ❖ Acknowledgements
+- `gruvbox-material-dark`
+- `gruvbox-material-light`
+- `gruvbox-mix-dark`
+- `everforest-dark`
+- `everforest-light`
+- `edge-dark`
+- `edge-light`
+- `sonokai`
+- `sonokai-andromeda`
+- `sonokai-atlantis`
+- `sonokai-espresso`
+- `sonokai-maia`
+- `sonokai-shusia`
+- `soft-era`
 
-   - **Thanks to **
-      - [janleigh](https://github.com/janleigh/dotfiles) for the README style.
-      - [dotzenith](https://github.com/dotzenith/dotconfig) for the README style too.
-      - [rockyzhang24](https://github.com/rockyzhang24) for the skhdrc config.
-      - [catppuccin](https://github.com/catppuccin) for the colors and the badge style.
-      - [FelixKratz] (https://github.com/FelixKratz) for the amazing SketchyBar and Dotfiles. 
+Alternatively, if you are using [zinit](https://github.com/zdharma-continuum/zinit) (formerly known as zplugin, [highly recommended](https://gist.github.com/laggardkernel/4a4c4986ccdcaf47b91e8227f9868ded)), you can install the theme like this:
+
+```zsh
+zinit light romkatv/powerlevel10k
+zinit snippet https://github.com/sainnhe/dotfiles/raw/master/.zsh-theme/<color-scheme>.zsh
+```
+
+## Customization
+
+There are 3 modes of the prompt themes:
+
+```zsh
+PURE_POWER_MODE=modern    # use nerdfont characters in the prompt
+PURE_POWER_MODE=fancy     # use unicode characters in the prompt (default)
+PURE_POWER_MODE=portable  # use only ascii characters in the prompt
+```
+
+To switch between them, set this variable **Before** sourcing the color scheme file in your zshrc.
+
+## License
+
+[Anti-996](../LICENSE-Anti-996) && [MIT](../LICENSE-MIT) © sainnhe
