@@ -80,6 +80,9 @@ yabai -m rule --add app="^MonitorControl$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Android Studio$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Goland$" sticky=on layer=above manage=off
 yabai -m rule --add app="^DataGrip$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Docker Desktop$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Spark$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Font Book$" sticky=on layer=above manage=off
 
 
 
@@ -88,8 +91,8 @@ yabai -m rule --add app="^DataGrip$" sticky=on layer=above manage=off
 # make sure the limelight binary is added somewhere in your $PATH
 
 # kill any existing limelight process if one exists, before we launch a new one
-killall limelight &> /dev/null
-limelight &> /dev/null &
+# killall limelight &> /dev/null
+# limelight &> /dev/null &
 
   # S K E T C H Y B A R  E V E N T S
     yabai -m signal --add event=window_focused action="sketchybar -m --trigger window_focus &> /dev/null"
