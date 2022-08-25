@@ -105,6 +105,7 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 export PATH="$HOME/.jev/bin:$PATH"
 eval "$(jenv init -)"
+export EDITOR='lvim'
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -129,6 +130,8 @@ eval "$(jenv init -)"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias v=nvim
+alias vv=neovide
 alias vi=lvim
 alias vii=lvim-gui
 alias ls='lsd'
