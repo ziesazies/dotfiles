@@ -5,7 +5,7 @@ if not status_ok then
 end
 
 npairs.setup {
-  check_ts = true,
+  check_ts = true, -- treesitter integration
   disable_filetype = { "TelescopePrompt" },
 }
 

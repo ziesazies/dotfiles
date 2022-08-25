@@ -77,7 +77,7 @@ _G.packer_plugins = {
   ["DAPInstall.nvim"] = {
     loaded = true,
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/DAPInstall.nvim",
-    url = "https://github.com/Pocco81/DAPInstall.nvim"
+    url = "https://github.com/ravenxrz/DAPInstall.nvim"
   },
   LuaSnip = {
     loaded = true,
@@ -93,11 +93,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
-  },
-  catppuccin = {
-    loaded = true,
-    path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/catppuccin",
-    url = "https://github.com/catppuccin/nvim"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -124,6 +119,11 @@ _G.packer_plugins = {
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["darkplus.nvim"] = {
+    loaded = true,
+    path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
+    url = "https://github.com/lunarvim/darkplus.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -133,6 +133,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  ["go.nvim"] = {
+    loaded = true,
+    path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/go.nvim",
+    url = "https://github.com/ray-x/go.nvim"
   },
   ["impatient.nvim"] = {
     loaded = true,
@@ -228,6 +233,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/Users/aliefazies/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-bbye"] = {
     loaded = true,

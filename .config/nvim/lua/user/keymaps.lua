@@ -15,6 +15,9 @@ vim.g.mapleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- Custom --
+keymap("i", "jj", "<ESC>", opts)
+
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -43,7 +46,7 @@ keymap("v", "p", '"_dP', opts)
 
 -- Insert --
 -- Press jk fast to enter
-keymap("i", "jj", "<ESC>", opts)
+keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
