@@ -78,11 +78,15 @@ yabai -m rule --add app="^Photo Booth$" sticky=on layer=above manage=off
 yabai -m rule --add app="^MenubarX$" sticky=on layer=above manage=off
 yabai -m rule --add app="^MonitorControl$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Android Studio$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Goland$" sticky=on layer=above manage=off
+yabai -m rule --add app="^GoLand$" sticky=on layer=above manage=off
 yabai -m rule --add app="^DataGrip$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Docker Desktop$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Spark$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Font Book$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Preview$" sticky=on layer=above manage=off
+yabai -m rule --add app="^IINA$" sticky=on layer=above manage=off
+yabai -m rule --add app="^VLC$" sticky=on layer=above manage=off
+yabai -m rule --add app="^WhatsApp$" sticky=on layer=above manage=off
 
 
 
