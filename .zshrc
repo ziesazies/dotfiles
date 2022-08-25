@@ -98,6 +98,7 @@ eval "$(jump shell)"
 # eval "$(starship init zsh)"
 source $HOME/.cargo/env
 export GOPATH=~/go
+export PATH=$PATH:$GOPATH/bin
 export PATH="/usr/local/Cellar/mysql/8.0.29_1/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
@@ -129,6 +130,7 @@ eval "$(jenv init -)"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vi=lvim
+alias vii=lvim-gui
 alias ls='lsd'
 alias l='ls -l'
 alias la='ls -a'
