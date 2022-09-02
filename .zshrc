@@ -21,7 +21,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -95,16 +95,17 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 eval "$(jump shell)"
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
 source $HOME/.cargo/env
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 export PATH="/usr/local/Cellar/mysql/8.0.29_1/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
+export JAVA_HOME="/usr/bin/java"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 export PATH="$HOME/.jev/bin:$PATH"
-eval "$(jenv init -)"
+export JAVA_HOME=$(/usr/libexec/java_home)
 export EDITOR='lvim'
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -145,6 +146,9 @@ alias lt='ls --tree'
 
 # PURE_POWER_MODE=modern
 # source /Users/aliefazies/.dotfiles/.zsh-theme/gruvbox-material-dark.zsh
+
+export GOROOT=/usr/local/opt/go/libexec
+export GOBIN=/Users/aliefazies/go/bin
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
