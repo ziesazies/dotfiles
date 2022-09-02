@@ -39,11 +39,11 @@ yabai -m config mouse_drop_action            swap
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  40
-yabai -m config bottom_padding               16
-yabai -m config left_padding                 16
-yabai -m config right_padding                16
-yabai -m config window_gap                   16
+yabai -m config top_padding                  36
+yabai -m config bottom_padding               12
+yabai -m config left_padding                 12
+yabai -m config right_padding                12
+yabai -m config window_gap                   12
 
 echo "yabai configuration loaded.."
 
@@ -87,6 +87,7 @@ yabai -m rule --add app="^Preview$" sticky=on layer=above manage=off
 yabai -m rule --add app="^IINA$" sticky=on layer=above manage=off
 yabai -m rule --add app="^VLC$" sticky=on layer=above manage=off
 yabai -m rule --add app="^WhatsApp$" sticky=on layer=above manage=off
+yabai -m rule --add app="^App Store$" sticky=on layer=above manage=off
 
 
 
