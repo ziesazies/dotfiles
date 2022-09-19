@@ -8,7 +8,7 @@ sketchybar --add item           apple.logo left                              \
            --set apple.logo     icon=$APPLE_ICN                              \
                                 icon.font="$FONT:Black:16.0"                 \
                                 icon.color=$WHITE                            \
-                                icon.padding_right=17                        \
+                                icon.padding_right=12                        \
                                 icon.padding_left=12                         \
                                 label.drawing=off                            \
                                 click_script="$POPUP_CLICK_SCRIPT"           \

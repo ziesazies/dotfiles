@@ -24,11 +24,3 @@ do
                               icon.font="$FONT:Light:15.0"
 done
 
-sketchybar   --add item       separator left                          \
-             --set separator  icon=                                  \
-                              icon.font="Liga SFMono Nerd Font:Regular:16.0" \
-                              background.padding_left=10              \
-                              background.padding_right=15             \
-                              label.drawing=off                       \
-                              associated_display=active               \
-                              icon.color=$WHITE
