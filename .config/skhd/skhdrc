@@ -71,6 +71,7 @@ lalt - r : yabai -m window --focus recent
 lalt - 0x27 : yabai -m window --focus last
 lalt - 0x29 : yabai -m window --focus first
 
+# Change Window while stack mode left alt + (<, >, /)
 lalt - 0x2B : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 lalt - 0x2F : yabai -m window --focus stack.next || yabai -m window --focus stack.first
 lalt - 0x2C : yabai -m window --focus stack.recent
